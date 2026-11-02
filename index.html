@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meu Controle - Sistema de Controle Financeiro Pessoal moderno, intuitivo e completo.">
+  <meta name="theme-color" content="#10b981">
+  <title>Meu Controle – Finanças Pessoais</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos CSS Modulares -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Overlay para fechar sidebar no mobile -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- ====================================================================
+         SIDEBAR (Menu Lateral)
+         ==================================================================== -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <a href="#dashboard" class="brand-link" title="Voltar para Visão Geral">
+          <div class="brand-logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"></path>
+              <path d="M4 6v12a2 2 0 0 0 2 2h14v-4"></path>
+              <path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"></path>
+            </svg>
+          </div>
+          <div class="brand-info">
+            <span class="brand-name">Meu Controle</span>
+            <span class="brand-subtitle">Finanças Pessoais</span>
+          </div>
+        </a>
+        <button type="button" class="sidebar-close-btn" aria-label="Fechar menu">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Navegação Lateral -->
+      <nav class="sidebar-nav">
+        <span class="nav-section-title">Navegação Principal</span>
+
+        <a href="#dashboard" class="nav-item active" data-view="dashboard" id="nav-dashboard">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+          </span>
+          <span>Visão geral</span>
+        </a>
+
+        <a href="#transactions" class="nav-item" data-view="transactions" id="nav-transactions">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+          </span>
+          <span>Transações</span>
+          <span class="nav-badge" id="nav-badge-transactions">0</span>
+        </a>
+
+        <a href="#reports" class="nav-item" data-view="reports" id="nav-reports">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          </span>
+          <span>Relatórios</span>
+        </a>
+
+        <a href="#categories" class="nav-item" data-view="categories" id="nav-categories">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+          </span>
+          <span>Categorias</span>
+          <span class="nav-badge" id="nav-badge-categories">0</span>
+        </a>
+
+        <span class="nav-section-title">Preferências</span>
+
+        <a href="#settings" class="nav-item" data-view="settings" id="nav-settings">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          </span>
+          <span>Configurações</span>
+        </a>
+      </nav>
+
+      <!-- Mini Perfil no Rodapé da Sidebar -->
+      <div class="sidebar-footer">
+        <div class="sidebar-user-card">
+          <div class="user-avatar">MC</div>
+          <div class="user-meta">
+            <span class="user-name">Pedro Henrique</span>
+            <span class="user-status">
+              <span class="status-dot"></span> Dados Locais Ativos
+            </span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         CORPO PRINCIPAL (Header + Views)
+         ==================================================================== -->
+    <div class="app-wrapper">
+      <!-- Cabeçalho Fixo -->
+      <header class="app-header">
+        <div class="header-left">
+          <button type="button" class="hamburger-btn" aria-label="Abrir menu de navegação">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          <div class="header-title-container">
+            <h1 class="header-page-title" id="header-page-title">Visão Geral</h1>
+            <span class="header-breadcrumb" id="header-breadcrumb">Início / Visão Geral</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Botão Ocultar/Mostrar Valores (Privacidade) -->
+          <button type="button" class="header-icon-btn" id="header-btn-toggle-privacy" title="Ocultar valores monetários">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </button>
+
+          <!-- Botão Modo Escuro / Claro -->
+          <button type="button" class="header-icon-btn" id="header-btn-toggle-theme" title="Alternar tema claro/escuro">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+
+          <!-- Botão Ação Rápida: Nova Movimentação -->
+          <button type="button" class="header-btn-quick-add" id="header-btn-quick-add">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Nova Movimentação</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Conteúdo Dinâmico das 5 Telas -->
+      <main class="app-main">
+        <!-- 1. Visão Geral (Dashboard) -->
+        <section id="view-dashboard" class="view-section active"></section>
+
+        <!-- 2. Transações -->
+        <section id="view-transactions" class="view-section"></section>
+
+        <!-- 3. Relatórios -->
+        <section id="view-reports" class="view-section"></section>
+
+        <!-- 4. Categorias -->
+        <section id="view-categories" class="view-section"></section>
+
+        <!-- 5. Configurações -->
+        <section id="view-settings" class="view-section"></section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Contêineres de Modal e Notificações Toast -->
+  <div id="modal-backdrop" class="modal-backdrop"></div>
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Script Principal Consolidado (Funciona tanto via servidor web quanto por duplo-clique no arquivo index.html) -->
+  <script src="js/bundle.js"></script>
+</body>
+</html>
